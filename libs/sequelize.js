@@ -11,9 +11,11 @@ const sequelize = new Sequelize(connectionString, {
     dialect: 'postgres',
     logging: config.isProd ? false : true,
     ...(config.isProd && {
-        ssl: {
-            rejectUnauthorized: false
-        }
+        dialectOptions: {
+			ssl: {
+				rejectUnauthorized: false
+			}
+		}
     })
 });
 
