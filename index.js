@@ -1,9 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const morgan = require('morgan');
 
 const routerApi = require('./routes');
 
-const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
+const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,13 +23,16 @@ const options = {
 }
 app.use(cors(options));
 
+app.use(morgan('dev'));
+
 app.get('/', (req, res) => {
-  res.send('Hola mi server en express');
+  res.send('Hola desde mi server en express');
 });
 
 routerApi(app);
 
 app.use(logErrors);
+app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
