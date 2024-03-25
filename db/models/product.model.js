@@ -72,6 +72,15 @@ class Product extends Model {
             }
         };
     }
+
+    static async updateStock(productId, quantity) {
+        await this.sequelize.query(
+            `UPDATE ${PRODUCT_TABLE} SET quantity = quantity - :quantity, available = quantity - :quantity > 0 WHERE id = :productId;`, {
+                replacements: { productId, quantity },
+                type: Sequelize.QueryTypes.UPDATE
+            }
+        );
+    }
 }
 
 module.exports = { Product, ProductSchema, PRODUCT_TABLE };

@@ -16,6 +16,10 @@ class OrderService {
 
   async addItems(data) {
     const newItems = await models.OrderProduct.bulkCreate(data);
+
+    newItems.forEach(async (item) => {
+      await models.Product.updateStock(item.productId, item.amount);
+  });
     return {
       message: `Items added: ${newItems.length}`
     };
