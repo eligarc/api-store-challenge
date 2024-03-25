@@ -30,7 +30,7 @@ class ProductsService {
   }
 
   async findOne(id) {
-    const product = await models.Category.findByPk(id, {
+    const product = await models.Product.findByPk(id, {
       include: ['category']
     });
 

@@ -63,6 +63,13 @@ class Product extends Model {
             tableName: PRODUCT_TABLE,
             modelName: 'Product',
             timestamps: false,
+            hooks: {
+                beforeCreate: async (product) => {
+                    if (product.quantity > 0) {
+                        product.available = true;
+                    }
+                }
+            }
         };
     }
 }
