@@ -16,6 +16,8 @@ class UserService {
       include: ['customer']
     });
 
+    delete newUser.dataValues.password;
+
     return response;
   }
 
@@ -25,6 +27,8 @@ class UserService {
     if (!user) {
       throw boom.notFound('user not found')
     }
+
+    delete newUser.dataValues.password;
 
     return user;
   }
