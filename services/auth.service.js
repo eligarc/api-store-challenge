@@ -28,10 +28,10 @@ class AuthService {
             sub: user.id,
             role: user.role
         }
-        const token = jwt.sign(payload, config.jwtSecret);
+        const access_token = jwt.sign(payload, config.jwtSecret);
         return {
             user,
-            token
+            access_token
         };
     }
 }
