@@ -10,7 +10,8 @@ const config = {
     dbHost: process.env.DB_HOST,
     dbPort: process.env.DB_PORT,
     jwtSecret: process.env.JWT_SECRET,
-    dbUrl: process.env.DATABASE_URL
+    dbUrl: process.env.DATABASE_URL,
+    expireTimeAccessToken: process.env.EXPIRE_TIME_ACCESS_TOKEN
 }
 
 module.exports = { config };

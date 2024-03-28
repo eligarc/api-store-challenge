@@ -13,6 +13,7 @@ class UserService {
 
   async find() {
     const response = await models.User.findAll({
+      attributes: ['id', 'email', 'role'],
       include: ['customer']
     });
 
