@@ -23,6 +23,8 @@ const options = {
 }
 app.use(cors(options));
 
+require('./utils/auth');
+
 app.use(morgan('dev'));
 
 app.get('/', (req, res) => {
