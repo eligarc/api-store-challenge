@@ -4,7 +4,7 @@ const id = Joi.number().integer();
 const customerId = Joi.number().integer();
 const orderId = Joi.number().integer();
 const productId = Joi.number().integer();
-const name = Joi.string().min(3).max(15);
+const name = Joi.string().min(3).max(50);
 const price = Joi.number().min(1).precision(2);
 const amount = Joi.number().integer().min(1);
 
